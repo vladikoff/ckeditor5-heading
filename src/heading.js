@@ -48,7 +48,7 @@ export default class Heading extends Plugin {
 		const options = this._getLocalizedOptions();
 		const commands = [];
 		const t = editor.t;
-		const defaultTitle = t( 'Aa' );
+		const defaultTitle = 'Aa';
 		const dropdownTooltip = t( 'Heading' );
 
 		for ( const option of options ) {
