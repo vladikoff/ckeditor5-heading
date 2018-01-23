@@ -86,11 +86,18 @@ export default class Heading extends Plugin {
 			...getCommandsBindingTargets( commands, 'value' ),
 			// ...and chose the title of the first one which #value is true.
 			( ...areActive ) => {
-				const index = areActive.findIndex( value => value );
+			  const index = areActive.findIndex( value => value );
 
-				// If none of the commands is active, display default title.
-				console.log(options);
-				return defaultTitle;
+			  // If none of the commands is active, display default title.
+              let title = defaultTitle;
+              if (options[index]) {
+                if (options[index].viewElement) {
+                  title = options[index].viewElement.toUpperCase();
+                } else {
+                  title = "P";
+                }
+              }
+			  return title;
 			}
 		);
 
