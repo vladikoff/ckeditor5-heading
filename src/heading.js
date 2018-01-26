@@ -91,8 +91,8 @@ export default class Heading extends Plugin {
 			  // If none of the commands is active, display default title.
 			  let title = defaultTitle;
 			  if (options[index]) {
-				if (options[index].viewElement) {
-				  title = options[index].viewElement.toUpperCase();
+				if (options[index].view) {
+				  title = options[index].view.toUpperCase();
 				}
 			  }
 			  return title;
