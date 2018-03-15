@@ -30,7 +30,7 @@ export default class HeadingUI extends Plugin {
 		const editor = this.editor;
 		const t = editor.t;
 		const options = getLocalizedOptions( editor );
-		const defaultTitle = t( 'Choose heading' );
+		const defaultTitle = t( 'Aa' );
 		const dropdownTooltip = t( 'Heading' );
 
 		// Register UI component.
@@ -64,7 +64,10 @@ export default class HeadingUI extends Plugin {
 				// Add the option to the collection.
 				dropdownItems.add( itemModel );
 
-				titles[ option.model ] = option.title;
+				titles[ option.model ] = {
+					title: option.title,
+					secTitle: option.secTitle
+				};
 			}
 
 			const dropdownView = createDropdown( locale );
@@ -91,7 +94,7 @@ export default class HeadingUI extends Plugin {
 			dropdownView.buttonView.bind( 'label' ).to( headingCommand, 'value', paragraphCommand, 'value', ( value, para ) => {
 				const whichModel = value || para && 'paragraph';
 				// If none of the commands is active, display default title.
-				return titles[ whichModel ] ? titles[ whichModel ] : defaultTitle;
+				return titles[ whichModel ] && titles[ whichModel ].secTitle ? titles[ whichModel ].secTitle : defaultTitle;
 			} );
 
 			// Execute command when an item from the dropdown is selected.
